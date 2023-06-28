@@ -1,0 +1,18 @@
+{
+    "name": "spukm01-069/backend",
+    "description": "project para el filtro del incentivo",
+    "autoload": {
+        "psr-4": {
+            "Spukm01069\\Backend\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "IvanDeveloperCampus",
+            "email": "ivancampus2023@gmail.com"
+        }
+    ],
+    "require": {
+        "bramus/router": "^1.6"
+    }
+}
