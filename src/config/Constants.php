@@ -8,7 +8,7 @@ class Constants{
     static public string $DB = 'campuslands';
     static public string $USER = 'campus';
     static public string $PASSWORD = 'campus2023';
-    static public string $CHARSET = 'utf8mb4';
+    static public string $CHARSET = 'utf8';
 }
 
 ?>

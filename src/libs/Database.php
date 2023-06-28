@@ -6,11 +6,13 @@ use PDO;
 use PDOException;
 
 class Database{
+    private static $instance;
     private string $host;
     private string $db;
     private string $user;
     private string $password;
     private string $charset;
+    private $pdo; 
 
     public function __construct(){
         $this->host = Constants::$HOST;
@@ -19,6 +21,13 @@ class Database{
         $this->password = Constants::$PASSWORD;
         $this->charset = Constants::$CHARSET;
         
+    }
+
+    public static function getInstance(){
+        if (self::$instance===null) {
+            self::$instance=new Database();
+        }
+        return self::$instance;
     }
 
     public function connect(){
@@ -34,17 +43,21 @@ class Database{
                 PDO::ATTR_EMULATE_PREPARES => true
             ];
 
-            $pdo=new PDO(
+            $this->pdo=new PDO(
                 $connection,
                 $this->user,
                 $this->password,
                 $options
             );
 
-            return $pdo;
+            return $this->pdo;
         
         } catch (PDOException $e) {
             print_r('Error connection: ' . $e->getMessage());
         }
+    }
+
+    public function disconnect(){
+        $this->pdo=null;
     }
 }
